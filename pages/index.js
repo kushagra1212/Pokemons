@@ -1,15 +1,11 @@
-
-import Image from 'next/image'
-import { Layout } from '../components/Layout/Layout'
+import Image from "next/image";
+import { Layout } from "../components/Layout/Layout";
+import { Pokemon } from "./Pokemons";
 
 export default function Home() {
   return (
-   <Layout title="Home">
-    <div className="mt-10">
-      It's Home
-    </div>
-
-   </Layout>
-
-  )
+    <Layout title="Home">
+      <Pokemon />
+    </Layout>
+  );
 }
