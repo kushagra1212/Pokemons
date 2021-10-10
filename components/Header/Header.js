@@ -1,10 +1,10 @@
 import { Search } from "../Search/Search";
-
+import Image from "next/image";
 export const Header = () => {
   return (
-    <div className="w-100 flex  justify-between  p-4  text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md  h-20 mt-1 m-5 content-center">
+    <div className="w-screen  flex p-4 justify-center  text-sm font-semibold text-purple-100 bg-purple-600 shadow-md  h-20  fixed z-10 ">
       <Search />
-      <h1>POKEMONS</h1>
+    <Image  src="/pikachu.svg" alt="pikachu" height={100} width={100}/>
     </div>
   );
 };
