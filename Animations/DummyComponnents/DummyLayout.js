@@ -1,10 +1,9 @@
-import { DummyHeader } from "./DummyHeader"
+import { DummyHeader } from "./DummyHeader";
 
-export const DummyLayout=()=>{
-        return (
-                <>
-                <DummyHeader/>
-                
-                </>
-        )
-}
+export const DummyLayout = () => {
+  return (
+    <>
+      <DummyHeader />
+    </>
+  );
+};
