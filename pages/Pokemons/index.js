@@ -2,8 +2,8 @@ import { Search } from "../../components/Search/Search";
 import axios from "axios";
 import { Card } from "../../components/card/Card";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getImage } from "../index";
-
+import { getImage, getIndex } from "../index";
+import Link from 'next/link';
 import { useCallback, useState } from "react";
 const LIMIT=25;
 export const Pokemons = ({pokemons}) => {
@@ -14,7 +14,7 @@ export const Pokemons = ({pokemons}) => {
  
    const getMorePokemons = async () => {
      let newPokemons=null;
-    if(offset==1150){
+    if(offset==875){
       setHasMore(false);
       return;
     }
@@ -23,8 +23,8 @@ export const Pokemons = ({pokemons}) => {
       const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}&offset=${offset}`);
   
       newPokemons = res.data?.results.map((poke, index) => {
-        console.log(poke);
-        return { ...poke, image: getImage(index+offset) };
+    
+        return { ...poke, image: getImage(index+offset),id:index+1+offset};
       });
   
     
@@ -35,19 +35,25 @@ export const Pokemons = ({pokemons}) => {
   
      setItems((item) => [...item, ...newPokemons]);
    };
-   console.log(offset)
+  
    return (
      <>
        <InfiniteScroll
          dataLength={items.length}
          next={getMorePokemons}
          hasMore={hasMore}
-         loader={<h3> Loading...</h3>}
+         loader={<div className="animate-spin"> </div>}
          endMessage={<h4>Nothing more to show</h4>}
-         className="flex flex-wrap"
+         className="flex flex-wrap content-center justify-center mt-14"
        >
-         {items.map((pokemon,index) => (
-         <Card pokemon={pokemon} key={index} />
+         {items?.map((pokemon,index) => (
+    <Link href={`/Pokemons/${pokemon.id}`}  key={index} >
+
+ <a>
+ <Card pokemon={pokemon} />
+
+ </a>
+    </Link>
          ))}
        </InfiniteScroll>
       
