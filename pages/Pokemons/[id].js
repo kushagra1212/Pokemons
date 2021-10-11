@@ -4,10 +4,33 @@ import { List } from "../../components/List/List";
 import Link from "next/link"
 import Router from "next/router";
 import { useEffect,useState } from "react";
-const Pokemon = ({ pokemon }) => {
+import { DummyLayout } from "../../Animations/DummyComponnents/DummyLayout";
 
+const Pokemon = ({ pokemon }) => {
+  const [loading, setLoading] = useState(false);
+  const start = () => {
+    console.log("start");
+    setLoading(true);
+  };
+  const end = () => {
+    console.log("findished");
+    setLoading(false);
+  };
+  useEffect(() => {
+    Router.events.on("routeChangeStart", start);
+    Router.events.on("routeChangeComplete", end);
+    Router.events.on("routeChangeError", end);
+    return () => {
+      Router.events.off("routeChangeStart", start);
+      Router.events.off("routeChangeComplete", end);
+      Router.events.off("routeChangeError", end);
+    };
+  }, []);
+  if(loading){
+    return (<DummyLayout/>)
+  }
   return (
-    <div className="flex flex-col justify-around items-center h-screen">
+    <div className="flex flex-col mt-10 justify-around items-center h-screen">
     <div className="flex flex-wrap justify-start   my-8 ">
       <img
         className="bg-gray-100 w-96 h-64 rounded-lg shadow-md bg-cover bg-center transition duration-500 ease-in-out  hover:bg-gray-400 transform hover:-translate-y-1 hover:scale-110  hover:text-gray-900"

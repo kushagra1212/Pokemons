@@ -1,13 +1,13 @@
 import axios from "axios";
 import Image from "next/image";
-import { Layout } from "../components/Layout/Layout";
+
 import { Pokemons } from "./Pokemons";
 
 export default function Home({ pokemons }) {
   return (
-    <Layout title="Pokemons">
+
       <Pokemons pokemons={pokemons} />
-    </Layout>
+  
   );
 }
 export const getIndex=(index)=>{

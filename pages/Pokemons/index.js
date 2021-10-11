@@ -6,6 +6,8 @@ import { getImage, getIndex } from "../index";
 import Link from 'next/link';
 import { useCallback, useState,useEffect } from "react";
 import Router from "next/router";
+import {Layout} from "../../components/Layout/Layout"
+import { DummyProfile } from "../../Animations/DummyComponnents/DummyProfile";
 const LIMIT=25;
 export const Pokemons = ({pokemons}) => {
  
@@ -32,7 +34,7 @@ export const Pokemons = ({pokemons}) => {
      };
    }, [])
    if(loading){
-     return  <></>
+     return <DummyProfile/>
    }
 
 
@@ -62,7 +64,7 @@ export const Pokemons = ({pokemons}) => {
    };
   
    return (
-     <>
+     <Layout title="">
        <InfiniteScroll
          dataLength={items.length}
          next={getMorePokemons}
@@ -82,7 +84,7 @@ export const Pokemons = ({pokemons}) => {
          ))}
        </InfiniteScroll>
       
-     </>
+     </Layout>
    );
 };
 
