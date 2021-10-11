@@ -2,18 +2,20 @@ import axios from "axios";
 import Image from "next/image";
 import { List } from "../../components/List/List";
 import Link from "next/link"
+import Router from "next/router";
+import { useEffect,useState } from "react";
 const Pokemon = ({ pokemon }) => {
-  console.log(pokemon);
-  console.log(pokemon.sprites.other.dream_world.front_default);
+
   return (
-    <div className="flex flex-wrap justify-center   my-8">
+    <div className="flex flex-col justify-around items-center h-screen">
+    <div className="flex flex-wrap justify-start   my-8 ">
       <img
-        className="bg-gray-100 w-96 h-64 rounded-lg shadow-md bg-cover bg-center"
+        className="bg-gray-100 w-96 h-64 rounded-lg shadow-md bg-cover bg-center transition duration-500 ease-in-out  hover:bg-gray-400 transform hover:-translate-y-1 hover:scale-110  hover:text-gray-900"
         src={pokemon.sprites.other.dream_world.front_default}
       />
 
-      <div className="w-56 md:w-96 bg-white mt-10 ml-28 shadow-lg rounded-lg self-stretch ">
-        <div className="py-2 text-center font-bold uppercase tracking-wide text-gray-800">
+      <div className="w-56 md:w-96 bg-white font-bold mt-10 ml-28 shadow-lg rounded-lg self-stretch transition duration-500 ease-in-out  hover:bg-gray-400 transform hover:-translate-y-1 hover:scale-110   hover:text-gray-900">
+        <div className="py-2 text-center font-extrabold md:text-4xl  hover:text-red-50 uppercase tracking-wide text-gray-800">
           {pokemon.species.name}
         </div>
         <div className="flex items-center justify-between py-2 px-3 bg-gray-400">
@@ -38,10 +40,12 @@ const Pokemon = ({ pokemon }) => {
         </div>
 
       </div>
-      <Link href="/">
-      <a className='relative bg-blue-500 text-white p-6 rounded text-2xl font-bold overflow-visible'>Home</a>
-      </Link>
+     
     </div>
+     <Link href="/">
+     <a className='w-24 text-center h-10 bg-blue-500 text-white rounded text-2xl font-bold overflow-visible justify-start transition duration-500 ease-in-out  hover:bg-red-700 transform hover:-translate-y-1 hover:scale-110 cursor-pointer  hover:text-red-200'>Home</a>
+     </Link>
+     </div>
   );
 };
 
@@ -51,10 +55,11 @@ export const getServerSideProps = async ({ query }) => {
 
   let pokemon = null;
   try {
+ 
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
     const results = res.data;
-    console.log(res);
+  
 
     return {
       props: {
