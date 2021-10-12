@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SuggestionList } from "../list/SuggestionList.js";
+import { SuggestionList } from "../List/SuggestionList.js";
 
 export const Search = ({ pokemons, setSearchTextandPokemonsHandler }) => {
 

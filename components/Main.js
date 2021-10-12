@@ -1,14 +1,14 @@
 import axios from "axios";
-import { Card } from "./card/Card.js";
+import { Card } from "./Card/Card.js";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getImage } from "../pages/index";
 import { useRouter } from 'next/router'
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import Router from "next/router";
-import { Layout } from "./layout/Layout";
-import { DummyProfile } from "../animations/dummyComponnents/DummyProfile";
-import { FilteredPokemonsComponent } from "./filteredPokemons/FilteredPokemonsComponent";
+import { Layout } from "./Layout/Layout";
+import { DummyProfile } from "../Animations/DummyComponnents/DummyProfile";
+import { FilteredPokemonsComponent } from "./FilteredPokemons/FilteredPokemonsComponent";
 
 const LIMIT = 25;
 

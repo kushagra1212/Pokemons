@@ -1,9 +1,9 @@
 import axios from "axios";
-import { List } from "../../components/list/List.js";
+import { List } from "../../components/List/List.js";
 import Link from "next/link";
 import Router from "next/router";
 import { useEffect, useState } from "react";
-import { DummyLayout } from "../../animations/dummyComponnents/DummyLayout.js";
+import { DummyLayout } from "../../Animations/DummyComponnents/DummyLayout.js";
 
 const PokemonPage = ({ pokemon }) => {
   const [loading, setLoading] = useState(false);
