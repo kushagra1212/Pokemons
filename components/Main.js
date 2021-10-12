@@ -129,7 +129,7 @@ export default function  Pokemons ({pokemons})  {
       
       >
         {items?.map((pokemon, index) => (
-          <Link href={`/pokemons/${pokemon.id}`} key={index}>
+          <Link href={`/Pokemons/${pokemon.id}`} key={index}>
             <a>
               <Card pokemon={pokemon} />
             </a>
