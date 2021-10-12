@@ -1,14 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokemons
+## Pokemons Website
 
-## Getting Started
 
-First, run the development server:
+It shows all the pokemons 
+## Features
 
-```bash
-npm run dev
-# or
+- Search Pokemons
+- Infinite scroll
+- Auto-Suggestions
+- See pokemons info in the details page
+- Explore pokemons
 
-```
+APIs Used [Pokeapi](https://pokeapi.co/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Tech-Stack
+
+
+- NextJS
+- TailwindCSS
+- React Hooks
