@@ -1,5 +1,5 @@
 import axios from "axios";
-import Main from "../components/Main";
+import Main from "../components/Main.js";
 
 function Home({ pokemons }) {
   return <Main pokemons={pokemons} />;

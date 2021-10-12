@@ -1,4 +1,4 @@
-import { Search } from "../Search/Search";
+import { Search } from "../Search/Search.js";
 
 export const Header = ({ pokemons, setSearchTextandPokemonsHandler }) => {
   return (

@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { Footer } from "../Footer/Footer";
-import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer.js";
+import { Header } from "../Header/Header.js";
 export const Layout = ({
   children,
   title,

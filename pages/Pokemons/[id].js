@@ -1,11 +1,11 @@
 import axios from "axios";
-import { List } from "../../components/List/List";
+import { List } from "../../components/List/List.js";
 import Link from "next/link";
 import Router from "next/router";
 import { useEffect, useState } from "react";
-import { DummyLayout } from "../../Animations/DummyComponnents/DummyLayout";
+import { DummyLayout } from "../../Animations/DummyComponnents/DummyLayout.js";
 
-const Pokemon = ({ pokemon }) => {
+const PokemonPage = ({ pokemon }) => {
   const [loading, setLoading] = useState(false);
   const start = () => {
   
@@ -77,7 +77,7 @@ const Pokemon = ({ pokemon }) => {
   );
 };
 
-export default Pokemon;
+export default PokemonPage;
 export const getServerSideProps = async ({ query }) => {
   const { id } = query;
 

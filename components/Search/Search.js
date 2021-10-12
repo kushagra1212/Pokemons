@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { SuggestionList } from "../List/SuggestionList";
+import { SuggestionList } from "../List/SuggestionList.js";
 
 export const Search = ({ pokemons, setSearchTextandPokemonsHandler }) => {
 
-  const [Pokemons, setPokemons] = useState(pokemons);
   const [text, setText] = useState("");
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,7 +21,7 @@ export const Search = ({ pokemons, setSearchTextandPokemonsHandler }) => {
       setSearchTextandPokemonsHandler(textCurrent, filteredPokemonsCurrent);
       return;
     }
-    filteredPokemonsCurrent = Pokemons.filter((pokemon) =>
+    filteredPokemonsCurrent = pokemons.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredPokemons(filteredPokemonsCurrent);
