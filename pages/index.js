@@ -1,22 +1,24 @@
 import axios from "axios";
+import Main from "../components/Main";
 
-
-import { Pokemons } from "./Pokemons";
-
-export default function Home({ pokemons }) {
-  return <Pokemons pokemons={pokemons} />;
+function Home({ pokemons }) {
+  return <Main pokemons={pokemons} />;
 }
+
+export default Home;
 export const getIndex = (index) => {
   const imageIndex = ("00" + (index + 1)).slice(-3);
   return imageIndex;
 };
+
 export const getImage = (index) => {
   const imageIndex = getIndex(index);
   const Image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageIndex}.png`;
   return Image;
 };
-export const getStaticProps = async () => {
-  let pokemons = null;
+
+export async function getServerSideProps() {
+  let pokemons = [];
   try {
     const res = await axios.get(
       `${process.env.API_BASE_URL}/?limit=25&offset=0`
@@ -40,4 +42,4 @@ export const getStaticProps = async () => {
       pokemons,
     },
   };
-};
+}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card } from "../card/Card";
+import { Card } from "../Card/Card";
 export const FilteredPokemonsComponent=({filteredPokemons})=>{
         return (
                 <div data-cy="pokemon-name-in-list" className="flex flex-wrap content-center justify-center mt-14">

@@ -1,29 +1,37 @@
 import axios from "axios";
-import { Card } from "../../components/card/Card";
+import { Card } from "./Card/Card";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getImage } from "../index";
+import { getImage } from "../pages/index";
+import { useRouter } from 'next/router'
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Router from "next/router";
-import { Layout } from "../../components/Layout/Layout";
-import { DummyProfile } from "../../Animations/DummyComponnents/DummyProfile";
-import { FilteredPokemonsComponent } from "../../components/FilteredPokemons/FilteredPokemonsComponent";
+import { Layout } from "./Layout/Layout";
+import { DummyProfile } from "../Animations/DummyComponnents/DummyProfile";
+import { FilteredPokemonsComponent } from "./FilteredPokemons/FilteredPokemonsComponent";
+
 const LIMIT = 25;
-export const Pokemons = ({ pokemons }) => {
+
+export default function  Pokemons ({pokemons})  {
+
+  const router=useRouter();
+
   const [items, setItems] = useState(pokemons);
   const [offset, setOffSet] = useState(LIMIT);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [count,setCount]=useState()
   const [searchText, setSearchText] = useState("");
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const start = () => {
-    console.log("start");
+  
     setLoading(true);
   };
   const end = () => {
-    console.log("findished");
+    
     setLoading(false);
   };
+
   const setSearchTextandPokemonsHandler = (text, filteredPokemons) => {
     setSearchText(text);
     setFilteredPokemons(filteredPokemons);
@@ -32,11 +40,15 @@ export const Pokemons = ({ pokemons }) => {
     Router.events.on("routeChangeStart", start);
     Router.events.on("routeChangeComplete", end);
     Router.events.on("routeChangeError", end);
+    window.onbeforeunload = function(e) {
+      router.beforePopState();
+    };
     return () => {
       Router.events.off("routeChangeStart", start);
       Router.events.off("routeChangeComplete", end);
       Router.events.off("routeChangeError", end);
     };
+
   }, []);
 
   if (searchText != "") {
