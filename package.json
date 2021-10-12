@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cy:open-only": "cypress open",
+    "cy:run-only": "cypress run",
+    "cy:open": "start-server-and-test dev 3000 cy:open-only",
+    "cy:run": "start-server-and-test dev 3000 cy:run-only"
   },
   "dependencies": {
     "axios": "^0.22.0",
@@ -19,9 +23,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.3.7",
+    "cypress": "^8.6.0",
     "eslint": "8.0.0",
     "eslint-config-next": "11.1.2",
     "postcss": "^8.3.9",
+    "start-server-and-test": "^1.14.0",
     "tailwindcss": "^2.2.16"
   }
 }

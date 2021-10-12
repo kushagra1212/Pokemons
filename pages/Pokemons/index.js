@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Router from "next/router";
 import { Layout } from "../../components/Layout/Layout";
 import { DummyProfile } from "../../Animations/DummyComponnents/DummyProfile";
+import { FilteredPokemonsComponent } from "../../components/FilteredPokemons/FilteredPokemonsComponent";
 const LIMIT = 25;
 export const Pokemons = ({ pokemons }) => {
   const [items, setItems] = useState(pokemons);
@@ -39,35 +40,27 @@ export const Pokemons = ({ pokemons }) => {
   }, []);
 
   if (searchText != "") {
-    console.log(filteredPokemons.length, searchText, "fill");
+
     let length = filteredPokemons.length;
     if (length > 0) {
       return (
         <Layout
-          title=""
+          title="Pokemons"
           pokemons={pokemons}
           setSearchTextandPokemonsHandler={setSearchTextandPokemonsHandler}
         >
-          <div className="flex flex-wrap content-center justify-center mt-14">
-            {filteredPokemons?.map((pokemon, index) => (
-              <Link href={`/Pokemons/${pokemon.id}`} key={index}>
-                <a>
-                  <Card pokemon={pokemon} />
-                </a>
-              </Link>
-            ))}
-          </div>
+        <FilteredPokemonsComponent filteredPokemons={filteredPokemons} />
         </Layout>
       );
     } else {
       return (
         <Layout
-          title=""
+          title="Pokemons"
           pokemons={pokemons}
           setSearchTextandPokemonsHandler={setSearchTextandPokemonsHandler}
         >
           <div className="flex flex-wrap content-center justify-center items-center w-full mt-14">
-            <h2 className="text-center opacity-80"> NO POKEMON FOUND !</h2>
+            <h2 className="text-center opacity-80">NO POKEMON FOUND !</h2>
           </div>
         </Layout>
       );
@@ -86,7 +79,7 @@ export const Pokemons = ({ pokemons }) => {
 
     try {
       const res = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}&offset=${offset}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/?limit=${LIMIT}&offset=${offset}`
       );
 
       newPokemons = res.data?.results.map((poke, index) => {
@@ -106,7 +99,7 @@ export const Pokemons = ({ pokemons }) => {
 
   return (
     <Layout
-      title=""
+      title="Pokemons"
       pokemons={pokemons}
       setSearchTextandPokemonsHandler={setSearchTextandPokemonsHandler}
     >
@@ -114,13 +107,14 @@ export const Pokemons = ({ pokemons }) => {
         dataLength={items.length}
         next={getMorePokemons}
         hasMore={hasMore}
-        loader={<div className="animate-spin"> </div>}
+        loader={<div className="animate-spin z-10"> </div>}
         endMessage={
           <div className="bg-gray-800 flex items-center justify-center  h-10 rounded-md  z-10 w-full text-white">
             <div className="  font-bold font-sans  ">You have Seen it All</div>
           </div>
         }
         className="flex flex-wrap content-center justify-center mt-14"
+      
       >
         {items?.map((pokemon, index) => (
           <Link href={`/Pokemons/${pokemon.id}`} key={index}>

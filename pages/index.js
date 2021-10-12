@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
   let pokemons = null;
   try {
     const res = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon/?limit=25&offset=0"
+      `${process.env.API_BASE_URL}/?limit=25&offset=0`
     );
 
     const results = res.data?.results.map((poke, index) => {

@@ -37,7 +37,7 @@ const Pokemon = ({ pokemon }) => {
         />
 
         <div className="w-56 md:w-96 bg-white font-bold mt-10 ml-28 shadow-lg rounded-lg self-stretch transition duration-500 ease-in-out  hover:bg-gray-400 transform hover:-translate-y-1 hover:scale-110   hover:text-gray-900">
-          <div className="py-2 text-center font-extrabold md:text-4xl  hover:text-red-50 uppercase tracking-wide text-gray-800">
+          <div data-cy="pokemon-name" className="py-2 text-center font-extrabold md:text-4xl  hover:text-red-50 uppercase tracking-wide text-gray-800">
             {pokemon?.species?.name}
           </div>
           <div className="flex items-center justify-between py-2 px-3 bg-gray-400">
