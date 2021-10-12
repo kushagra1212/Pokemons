@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Card } from "./Card/Card";
+import { Card } from "./Card/Card.js";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getImage } from "../pages/index";
 import { useRouter } from 'next/router'
