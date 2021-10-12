@@ -1,14 +1,14 @@
 import axios from "axios";
-import { Card } from "./Card/Card.js";
+import { Card } from "./card/Card.js";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getImage } from "../pages/index";
 import { useRouter } from 'next/router'
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import Router from "next/router";
-import { Layout } from "./Layout/Layout";
-import { DummyProfile } from "../Animations/DummyComponnents/DummyProfile";
-import { FilteredPokemonsComponent } from "./FilteredPokemons/FilteredPokemonsComponent";
+import { Layout } from "./layout/Layout";
+import { DummyProfile } from "../animations/dummyComponnents/DummyProfile";
+import { FilteredPokemonsComponent } from "./filteredPokemons/FilteredPokemonsComponent";
 
 const LIMIT = 25;
 
@@ -129,7 +129,7 @@ export default function  Pokemons ({pokemons})  {
       
       >
         {items?.map((pokemon, index) => (
-          <Link href={`/Pokemons/${pokemon.id}`} key={index}>
+          <Link href={`/pokemons/${pokemon.id}`} key={index}>
             <a>
               <Card pokemon={pokemon} />
             </a>
