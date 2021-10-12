@@ -11,7 +11,7 @@ describe("Pokemon App ", () => {
     pokemons.forEach((pokemon, index) => {
       cy.get("a").contains(pokemon).click();
       let Index = index + 1;
-      cy.url().should("include", "/Pokemons/" + Index);
+      cy.url().should("include", "/pokemons/" + Index);
       cy.get("button").contains("Abilities");
       cy.get("button").contains("Height");
       cy.get("[data-cy=pokemon-name]").contains(pokemon);
